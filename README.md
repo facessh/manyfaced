@@ -19,18 +19,19 @@ teams. The diagram is the architecture.
 
 ## Install a manyfaced skill
 
-Each skill is a directory with a `SKILL.md`, FACE.md recipes, and TEAM.md files.
+Each skill is a directory with a `SKILL.md` and a `catalog/` of FACE.md and
+TEAM.md files.
 
 ```bash
 # Clone the catalog
-git clone --depth 1 https://github.com/facessh/manyfaced.git ~/.manyfaced
+git clone --depth 1 https://github.com/facessh/manyfaced.git ~/manyfaced
 
 # Copy a skill to your skills directory
-cp -r ~/.manyfaced/<skill-name> ~/.claude/skills/<skill-name>
+cp -r ~/manyfaced/<skill-name> ~/.claude/skills/<skill-name>
 ```
 
 Before using a manyfaced skill, compile its faces. Each skill has a Setup
-section listing which faces need compilation and where the recipes are.
+section listing which faces need compilation and where the FACE.md files are.
 
 ## Requirements
 
@@ -43,14 +44,35 @@ section listing which faces need compilation and where the recipes are.
 
 Built a manyfaced skill? Submit a PR.
 
+### Skill vs production
+
+A manyfaced skill is a **template** — a reusable workflow with face assignments.
+The faces you cast for a specific use case are a **production** — instances of
+the template.
+
+When publishing, include only faces that are structural to the skill itself (if
+any). Production-specific faces belong to the user, not the catalog. Most skills
+will ship with an empty `catalog/` and instructions to run `/face` for each role.
+
+If a skill does ship with structural faces (e.g. a built-in adversarial critic),
+include the full FACE.md — frontmatter, Queued sources with real URLs, Sources,
+Lessons, Notes. This is the living document that lets someone recreate the face.
+
+### Composite faces
+
+If a skill uses composite faces (Face Math), include:
+- FACE.md files for all component faces
+- The composite's FACE.md with the `formula` field set (e.g. `"a | b - c"`)
+- A note in the composite's Notes section listing which components are required
+
 ### Directory structure
 
 ```
 manyfaced-<skillname>/
   SKILL.md              # the skill — must include a circuit diagram
-  recipes/              # FACE.md and TEAM.md files
-    <alias>-FACE.md
-    <team-name>-TEAM.md
+  catalog/              # FACE.md and TEAM.md files (structural faces only)
+    <alias>/FACE.md
+    teams/<team-name>/TEAM.md
   README.md             # what the skill does, who it's for, example usage
 ```
 
@@ -60,18 +82,24 @@ manyfaced-<skillname>/
 - [ ] `SKILL.md` with YAML frontmatter (`name`, `description`)
 - [ ] Circuit diagram in mermaid after the Setup section — uses standard
       notation: `[faceless]`, `([solo face])`, `{{team}}`
-- [ ] Setup table listing all faces and teams with recipe paths
-- [ ] All FACE.md recipes included in `recipes/` with queued sources
-- [ ] All TEAM.md files included in `recipes/` with mermaid protocol diagrams
+- [ ] Setup table listing all faces and teams with paths
+- [ ] All structural FACE.md files in `catalog/` with queued sources (real URLs)
+- [ ] All TEAM.md files in `catalog/teams/` with mermaid protocol diagrams
 - [ ] `README.md` explaining the skill, who it's for, and example output
-- [ ] No compiled face data — only recipes. Users compile locally.
+- [ ] No compiled face data — only FACE.md files. Users compile locally.
 - [ ] No API keys, tokens, or credentials in any file
+
+### Version tagging
+
+Tag releases with semver git tags (`v1.0.0`, `v1.1.0`). Users can pin to a
+version: `git clone --branch v1.0.0 ...`. Breaking changes to the circuit
+(adding/removing faces, changing step routing) bump the major version.
 
 ### How to create a manyfaced skill
 
 Use the `/manyface` slash command from [faces-skill](https://github.com/facessh/faces-skill).
 It walks you through decomposing a skill into roles, casting faces, and
-producing the output directory.
+producing the output directory. Choose "publish" at the end to prep for a PR.
 
 ---
 
