@@ -19,14 +19,29 @@ teams. The diagram is the architecture.
 
 ## Install a manyfaced skill
 
-Each skill is a directory with a `SKILL.md` and a `catalog/` of FACE.md and
-TEAM.md files.
+**Via the faces CLI** (recommended):
 
 ```bash
-# Clone the catalog
-git clone --depth 1 https://github.com/facessh/manyfaced.git ~/manyfaced
+# Browse available skills
+faces catalog:manyfaced
 
-# Copy a skill to your skills directory
+# See details for a skill
+faces catalog:manyfaced --skill manyfaced-code-review
+
+# Install to Claude Code
+faces catalog:manyfaced --install manyfaced-code-review --skills-dir ~/.claude/skills
+
+# Install to OpenClaw
+faces catalog:manyfaced --install manyfaced-code-review --skills-dir ~/.openclaw/workspace/skills
+```
+
+The install command copies FACE.md files to `~/.faces/catalog/` and prints
+which faces need compilation.
+
+**Manual install:**
+
+```bash
+git clone --depth 1 https://github.com/facessh/manyfaced.git ~/manyfaced
 cp -r ~/manyfaced/<skill-name> ~/.claude/skills/<skill-name>
 ```
 
