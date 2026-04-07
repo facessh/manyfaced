@@ -2,14 +2,9 @@
 
 > A catalog of agent skills where every step is run by a specialized face.
 
-Manyfaced skills are agent skills (Claude Code, OpenClaw) where the generic AI
-voice has been replaced with faces — cognitive primitives that change how an LLM
-composes language. Each step that requires judgment is routed to a face or team
-of faces. Mechanical steps stay faceless.
+Manyfaced skills are agent skills (Claude Code, Codex, Hermes, OpenClaw and other Claws...) where the generic AI running each step has been replaced with unique faces — cognitive primitives that change how an LLM composes language. Each pivotal step that benefits from a particular perspective is routed to a face or team of faces. Mechanical steps stay faceless.
 
-Every skill includes a **circuit diagram** showing the routing logic at a glance:
-rectangles are faceless plumbing, rounded boxes are solo faces, hexagons are
-teams. The diagram is the architecture.
+Every skill includes a **circuit diagram** showing the routing logic at a glance: rectangles are faceless plumbing, rounded boxes are solo faces, hexagons are teams. The diagram is the architecture.
 
 ## Browse the catalog
 
