@@ -14,7 +14,17 @@ Every skill includes a **circuit diagram** showing the routing logic at a glance
 
 ## Install a manyfaced skill
 
-**Via the faces CLI** (recommended):
+**Via the /manyface skill** (recommended):
+
+```
+/manyface list                              — browse the catalog
+/manyface install manyfaced-code-review     — install directly
+```
+
+The agent handles cloning, copying files, and tells you which faces need
+compilation. No CLI commands needed.
+
+**Via the faces CLI:**
 
 ```bash
 # Browse available skills
