@@ -62,7 +62,17 @@ section listing which faces need compilation and where the FACE.md files are.
 
 ## Contributing
 
-Built a manyfaced skill? Submit a PR.
+Built a manyfaced skill? Publish it with one command:
+
+```
+/manyface publish
+```
+
+This packages your skill, forks the catalog, and opens a PR — no manual git
+steps needed. You can also publish right after creating a skill by choosing
+"publish" at the end of the `/manyface` flow.
+
+### What goes in a submission
 
 ### Skill vs production
 
@@ -117,9 +127,9 @@ version: `git clone --branch v1.0.0 ...`. Breaking changes to the circuit
 
 ### How to create a manyfaced skill
 
-Use the `/manyface` slash command from [faces-skill](https://github.com/faces-sh/faces-skill).
+Use `/manyface` from [faces-skill](https://github.com/faces-sh/faces-skill).
 It walks you through decomposing a skill into roles, casting faces, and
-producing the output directory. Choose "publish" at the end to prep for a PR.
+producing the output directory. Then `/manyface publish` to submit it.
 
 ---
 
