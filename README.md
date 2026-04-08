@@ -4,7 +4,7 @@
 
 Manyfaced skills are agent skills (Claude Code, Codex, Hermes, OpenClaw and other Claws...) where the generic AI running each step has been replaced with unique faces — cognitive primitives that change how an LLM composes language. Each pivotal step that benefits from a particular perspective is routed to a face or team of faces. Mechanical steps stay faceless.
 
-Every skill includes a **circuit diagram** showing the routing logic at a glance: rectangles are faceless plumbing, rounded boxes are solo faces, hexagons are teams. The diagram is the architecture.
+Every skill includes a **circuit diagram** — a mermaid flowchart showing the routing logic at a glance. Three shapes, one rule each: `[instruction]` sharp rectangles are faceless steps the agent executes, `(alias)` rounded rectangles are solo face calls, `{{team}}` hexagons are team steps whose internal protocol lives in a TEAM.md. Edges show explicit data flow. The diagram is the architecture.
 
 ## Browse the catalog
 
@@ -111,10 +111,12 @@ manyfaced-<skillname>/
 - [ ] Directory named `manyfaced-<skillname>`
 - [ ] `SKILL.md` with YAML frontmatter (`name`, `description`)
 - [ ] Circuit diagram in mermaid after the Setup section — uses standard
-      notation: `[faceless]`, `([solo face])`, `{{team}}`
+      notation: `[faceless]`, `(solo face)`, `{{team}}`
 - [ ] Setup table listing all faces and teams with paths
 - [ ] All structural FACE.md files in `catalog/` with queued sources (real URLs)
 - [ ] All TEAM.md files in `catalog/teams/` with mermaid protocol diagrams
+      using the same convention: `(face)` rounded rects, `[instruction]`
+      sharp rects, `{condition}` diamonds, explicit edges
 - [ ] `README.md` explaining the skill, who it's for, and example output
 - [ ] No compiled face data — only FACE.md files. Users compile locally.
 - [ ] No API keys, tokens, or credentials in any file
